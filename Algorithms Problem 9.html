@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Merge Arrays</title>
 </head>
 <body>
     <script>
@@ -17,57 +17,32 @@
         //     (Source: https://adriann.github.io/programming_problems.html)
 
         function mergeSortedArrays(array1, array2){
-            //loop through array 1 and see if the current element in array 2 is greater then
-            //if so , insert into
-
-
             var counter1 = 0;
             var counter2 = 0;
+            var outputArray = [];
 
-            while(counter1 < array1.length && counter2 < array2.length){
-                //if array 2 is > array 1 AND >
-                //walk through array 1 until you find where it is greater than the element in array 2
+            //loop until all values in both arrays have been looked at
+            while(counter1 < array1.length || counter2 < array2.length){
+                //add each element of array1 to the output array until it is less that the current element in array2
+                //when it is, put the current element in array2 in the output array and advance to array2's next element
                 
-                //if array1 is shoter then array2 and runs out before the loop exits, splice the rest of array 2 in
-                //and break
-                // if(counter1 === array1.length){
-                //     array.splice(counter1,array2.length - counter2, )
-                // }
-
+                //as long as the current element in array1 is less than the current element in array2
                 while(array1[counter1] < array2[counter2]){
+                    //push array1's value into the output and keep advancing to compare the next element in array1 to the same element in array2
+                    outputArray.push(array1[counter1]);
                     counter1++;
                 }
-                //grab value from array2 and put before 
-                array1.splice(array1[counter1-1], 1, array2[counter2]);
-                //go on to the next item in array2
-                //[1,2,3,5,6,9] [3,4,5,10]
+                //push array2's value onto the output when array2 is >= array1's value
+                outputArray.push(array2[counter2]);
+                //advance to the next element in array2 to compare against
                 counter2++;
-
             }
-            return array1;
-
-            // //splice
-            // var array2Count = 0;
-            // for(array1Count = 0; array1Count < array1.length; array1Count++){
-            //     //look at each item in array
-            //     if(array2[array2Count] >= array1[array1Count] ){
-            //         array1.splice(array1Count,1,array2[array1Count])
-            //         array2Count++
-            //     }
-
-
-
-            //     //find min of each array and start looking only after that
-
-            //     //find max 
-
-            // }
-
-            
-
+            return outputArray;
         }
 
-        console.log(mergeSortedArrays([1,2,5,6,9], [3,4,5,10]));
+        console.log("Expecting '[1,2,3,4,5,5,6,9,10]'. Result: ", mergeSortedArrays([1,2,5,6,9], [3,4,5,10]));
+        console.log("Expecting '[]'. Result: ", mergeSortedArrays([], []));
+        console.log("Expecting '[-2, -1, 0, 1, 2]'. Result: ", mergeSortedArrays([-1, 0, 1], [-2, 2]));
     </script>
 </body>
 </html>
