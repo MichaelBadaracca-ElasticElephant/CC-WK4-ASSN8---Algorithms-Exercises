@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 7. Write a function which takes in an array of numbers and a max cutoff value, and returns a new array with elements limited by the cutoff value.
+        // [1,2,3,4,5,6,7,8], 4 -> [1,2,3,4,4,4,4,4]
+        // [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
+
+        //copy array if the item is less than the max cutoff 
+        //otherwise make it the max cutoff
+
+        function limitArrayToCutoff(inputArray, maxCutoff){
+            for(var count = 0; count < inputArray.length; count++){
+                //if a number is greater than the maxCutoff then replace it with the maxCutoffx 
+                if(inputArray[count] > maxCutoff){
+                    inputArray[count] = maxCutoff;
+                }
+            }
+            return inputArray;
+        }
+
+        console.log(limitArrayToCutoff([1,5,7,3,1,5,7], 3));
+        console.log(limitArrayToCutoff([1,2,3,4,5,6,7,8], 4));
+    </script>
+</body>
+</html>

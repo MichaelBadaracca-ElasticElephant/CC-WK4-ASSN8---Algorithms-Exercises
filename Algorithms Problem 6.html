@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //6. Write a function which takes in two arrays and determines if they contain the same number of the same values.
+        // [], [] -> true
+        // [2, 3, 4], [1, 2, 3] -> false
+        // ["a", "c", "b"], ["a", "b", "c"] -> true
+        // [1, 1, 1], [1, 1, 1, 1] -> false 
+        
+        function countArrayItems(inputArray){
+            var arrayItems = {};
+            for(var count =0; count < inputArray.length; count++){
+                //index the object by the value of the array
+                if(arrayItems[inputArray[count]] === undefined){
+                    //if the key does not exist, add it with a value of 1
+                    arrayItems[inputArray[count]] = 1 ;
+                }else{
+                    //if the key exists, increment its value
+                    arrayItems[inputArray[count]]++;
+                }
+            }
+            return arrayItems;
+        }
+
+        function doArraysHaveSameNumItems(array1, array2){
+            //Count the types of items in each array
+            array1Items = countArrayItems(array1);
+            array2Items = countArrayItems(array2);
+            
+            //until it is show they don't have the same number, we will assume they do
+            var sameNumItems = true;
+            for(item in array1Items){
+                //if the value for the key of one arrey's items doesn't match the other, they are not the same
+                if(array1Items[item] !== array2Items[item]){
+                    sameNumItems = false;
+                    break;
+                }
+            }
+            return sameNumItems;
+        }
+
+        //Tests
+        console.log(doArraysHaveSameNumItems([],[]) === true);
+        console.log(doArraysHaveSameNumItems([2, 3, 4], [1, 2, 3]) === false);
+        console.log(doArraysHaveSameNumItems(["a", "c", "b"], ["a", "b", "c"]) === true);
+        console.log(doArraysHaveSameNumItems([1, 1, 1], [1, 1, 1, 1]) === false); 
+        console.log(doArraysHaveSameNumItems(["a", 3, "cat"], ["cat", 3, "a"]) === true);
+
+    </script>
+</body>
+</html>

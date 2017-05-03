@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 9. Write a function which takes two sorted lists and merges them into a new sorted list.
+
+        //     [1,2,5,6,9], [3,4,5,10] -> [1,2,3,4,5,5,6,9,10]
+        //     [], [] -> []
+        //     [-1, 0, 1], [-2, 2] -> [-2, -1, 0, 1, 2]
+
+        //     (Source: https://adriann.github.io/programming_problems.html)
+
+        function mergeSortedArrays(array1, array2){
+            //loop through array 1 and see if the current element in array 2 is greater then
+            //if so , insert into
+
+
+            var counter1 = 0;
+            var counter2 = 0;
+
+            while(counter1 < array1.length && counter2 < array2.length){
+                //if array 2 is > array 1 AND >
+                //walk through array 1 until you find where it is greater than the element in array 2
+                
+                //if array1 is shoter then array2 and runs out before the loop exits, splice the rest of array 2 in
+                //and break
+                // if(counter1 === array1.length){
+                //     array.splice(counter1,array2.length - counter2, )
+                // }
+
+                while(array1[counter1] < array2[counter2]){
+                    counter1++;
+                }
+                //grab value from array2 and put before 
+                array1.splice(array1[counter1-1], 1, array2[counter2]);
+                //go on to the next item in array2
+                //[1,2,3,5,6,9] [3,4,5,10]
+                counter2++;
+
+            }
+            return array1;
+
+            // //splice
+            // var array2Count = 0;
+            // for(array1Count = 0; array1Count < array1.length; array1Count++){
+            //     //look at each item in array
+            //     if(array2[array2Count] >= array1[array1Count] ){
+            //         array1.splice(array1Count,1,array2[array1Count])
+            //         array2Count++
+            //     }
+
+
+
+            //     //find min of each array and start looking only after that
+
+            //     //find max 
+
+            // }
+
+            
+
+        }
+
+        console.log(mergeSortedArrays([1,2,5,6,9], [3,4,5,10]));
+    </script>
+</body>
+</html>

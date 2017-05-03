@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 5. Write function that translates a text to Pig Latin, and another that translates back. English is translated to Pig Latin by taking the first letter of every word, moving it to the end of the word and adding "ay".
+
+        // "The quick brown fox" -> "Hetay uickqay rownbay oxfay".
+
+        // (source: https://adriann.github.io/programming_problems.html)
+
+            function translatePhraseToPigLatin(englishPhrase){
+                //Split each word in the phrase into an array or words (Note: this is not taking punctuation into account)
+                var pigLatinPhrase = "";
+                var words = englishPhrase.split(" ");
+                for(var wordCounter = 0; wordCounter < words.length; wordCounter++){
+                    pigLatinPhrase += translateWordToPigLatin(words[wordCounter]) + " ";
+                }
+                return pigLatinPhrase;
+            }
+
+            function translateWordToPigLatin(englishWord){
+                //check to see if input is a string
+                if(typeof(englishWord) === "string" && typeof(englishWord) != undefined){
+                    var PIG_LATIN_SUFFIX = "ay";
+                    var pigLatinWord = "";
+                    //get first letter
+                    var firstLetter = englishWord.charAt(0);
+                    //check to see if first character is capitalized
+                    var capitalizefirstLetter = isUpperCase(firstLetter);
+                    //make everything lowercase to be consistent
+                    englishWord = englishWord.toLowerCase();
+                    firstLetter = firstLetter.toLowerCase();
+                    //slice out everything but the first letter and concatenate firstletter + "ay"
+                    pigLatinWord = englishWord.slice(1,englishWord.length) + firstLetter + PIG_LATIN_SUFFIX;
+                    //if first letter was capitalized, capitalize new first letter
+                    if(capitalizefirstLetter){
+                        pigLatinWord = capitalizeFirstLetter(pigLatinWord);
+                    }
+                    return pigLatinWord;
+                }else{
+                    console.log("'" + englishWord + "' is not a string. Cannot convert to pig latin");
+                } 
+            }
+
+            function isUpperCase(stringToCheck){
+                if(stringToCheck === stringToCheck.toUpperCase()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            function capitalizeFirstLetter(stringToCapitalize){
+                var capitializedFirstLetter = stringToCapitalize.charAt(0).toUpperCase();
+                var allButFirstLetter = stringToCapitalize.slice(1, stringToCapitalize.length);
+                return capitializedFirstLetter + allButFirstLetter;
+            }
+
+            //Tests
+            //Should equal "Hetay uickqay rownbay oxfay"
+            console.log(translatePhraseToPigLatin("The quick brown fox"));
+
+    </script>
+</body>
+</html>

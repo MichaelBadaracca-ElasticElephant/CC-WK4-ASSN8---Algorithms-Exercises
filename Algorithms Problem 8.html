@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 8. Write a function which takes no input and returns an array of 10 distinct randomly generated integers between 1 and 100.
+        // -> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
+        // -> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
+
+        function generateRandomNumsArray(){
+            var ARRAY_SIZE = 10;
+            var UPPER_BOUND = 100;
+            var outputArray = [];
+
+            while(outputArray.length < ARRAY_SIZE){
+                //generate random integer between 1 and UPPER_BOUND
+                var randomNum = Math.floor(Math.random() * UPPER_BOUND);
+                //if the number is not in the array push it in, otherwise keep looping until the array if filled with only unique random numbers
+                if(outputArray.indexOf(randomNum) == -1 ){
+                    outputArray.push(randomNum);
+                } 
+            }
+            return outputArray;
+        }
+        console.log(generateRandomNumsArray());
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 4. Write a function which takes an array of integers and returns an array with any duplicate integers removed.
+        //         [1,1,2,3,1,2,3] -> [1,2,3]
+        //         [1,4,4,4,2,2,4,4,4] -> [1,4,2]
+        
+        function removeDuplicates(inputArray){
+            //loop through
+            //if element doesn't exist add it to list of all things
+            //simply return this list
+
+
+
+            //if it looks like any item in the unique items array, don't add it
+            //for one item in the normal array
+            //loop through each item in the unique items
+
+            //isUnique = true
+
+            var uniqueItemsArray = [];
+
+            for(var inputArrayCounter = 0; inputArrayCounter < inputArray.length; inputArrayCounter++){
+                
+                var isUnique = true;
+                //Loop through each item in the unique items
+                for(var uniqueItemsArrayCounter = 0; uniqueItemsArrayCounter < uniqueItemsArray.length; uniqueItemsArrayCounter++){
+                    //if an item in the input array equals something in the unique items, flag as not unique and break
+                    if(inputArray[inputArrayCounter] === uniqueItemsArray[uniqueItemsArrayCounter]){
+                        isUnique = false;
+                        break;
+                    } 
+                }
+                if(isUnique){
+                    //
+                    uniqueItemsArray.push(inputArray[inputArrayCounter]);
+                }else{
+                    isUnique = true;
+                }  
+            }
+            return uniqueItemsArray;
+        }
+
+        //Testing
+        console.log(removeDuplicates([1,1,2,3,1,2,3]));
+        console.log(removeDuplicates([1,4,4,4,2,2,4,4,4]));
+    </script>
+</body>
+</html>

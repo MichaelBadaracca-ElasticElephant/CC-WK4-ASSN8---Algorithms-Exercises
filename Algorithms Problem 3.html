@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3. Write a function which takes an array of integers > 0 and returns the first integer which does not appear in that array.
+        // [1,2,5] -> 3
+        // [1,2,3,4,5] -> 6
+        // [3,4,5] -> 1
+
+        function findFirstIntOutOfSequence(arrayOfInts){
+            //Counting up from 1 gives an example of the whole sequence of ints
+            for(var counter = 0; counter < arrayOfInts.length; counter++){
+                //If an int in the array is different from the counter + 1, it is out of sequence
+                if(arrayOfInts[counter] != counter + 1){
+                    return counter + 1;
+                }
+            }
+            //If there are no numbers out of sequence before the end of the array, then the next number is out of sequence
+            return arrayOfInts.length + 1;
+        }
+
+        //Tests
+        console.log(findFirstIntOutOfSequence([1,2,5]) === 3);
+        console.log(findFirstIntOutOfSequence([1,2,3,4,5]) === 6);
+        console.log(findFirstIntOutOfSequence([3,4,5]) === 1);
+
+    </script>
+
+</body>
+</html>
